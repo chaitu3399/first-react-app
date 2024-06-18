@@ -8,7 +8,7 @@ import Svg, {
   Stop
 } from "react-native-svg"
 
-function SvgComponent(props) {
+function SvgImage({props}: {props: any}) {
   return (
     <Svg
       width={270}
@@ -724,4 +724,4 @@ function SvgComponent(props) {
   )
 }
 
-export default SvgComponent
+export default SvgImage

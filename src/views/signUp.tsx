@@ -5,15 +5,17 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import Input from "../components/Input";
-import Button from "../components/Button";
-import { screenNames } from "../navigation/screenNames";
 
-const Signup = ({ navigation }) => {
+import Button from "./components/button";
+import { screenNames } from "../navigation/screenNames";
+import Input from "./components/input";
+
+const Signup = ({ navigation }: {navigation: any}) => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState(0);
   const [college, setcollege] = useState("");
@@ -22,7 +24,7 @@ const Signup = ({ navigation }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSignUp = () => {
-    let errors = [];
+    let errors: Array<String> = [];
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const uppercaseRegex = /[A-Z]/;
     const digitRegex = /\d/;
@@ -39,9 +41,7 @@ const Signup = ({ navigation }) => {
     //Handling phone number
     if (!phoneNumber) {
       errors.push("Phone Number is Required.");
-    } else if (phoneNumber.length != 10) {
-      errors.push("Phone Number is Invalid.");
-    }
+    } 
     //Handling Email
     if (!email) {
       errors.push("Email is required.");
@@ -65,16 +65,16 @@ const Signup = ({ navigation }) => {
       errors.push("Password does not match, please try again.");
     }
     if (errors.length != 0) {
-      alert(errors.join("\n"));
+      Alert.alert(errors.join("\n"));
     } else {
       navigation.navigate(screenNames.PROFILE);
     }
   };
 
   return (
-    <SafeAreaView style={{ flexGrow: 1 }}>
+    <SafeAreaView>
       <ScrollView>
-        <View style={{ flexDirection: "row" }}>
+        <View style={{ flexDirection: "row", marginTop: 10 }}>
           <TouchableOpacity
             onPress={() => navigation.navigate(screenNames.LANDINGPAGE)}
           >
@@ -91,7 +91,8 @@ const Signup = ({ navigation }) => {
             value={userName}
             onChangeText={setUserName}
             placeHolder="John Doe"
-            style={styles.input}
+            customStyle={null}
+            secureTextEntry={false}
           />
         </View>
         <View style={styles.inputContainer}>
@@ -100,7 +101,8 @@ const Signup = ({ navigation }) => {
             value={college}
             onChangeText={setcollege}
             placeHolder="Oxford University"
-            style={styles.input}
+            customStyle={null}
+            secureTextEntry={false}
           />
         </View>
         <View style={styles.inputContainer}>
@@ -109,7 +111,8 @@ const Signup = ({ navigation }) => {
             value={phoneNumber}
             onChangeText={setPhoneNumber}
             placeHolder="9876543210"
-            style={styles.input}
+            customStyle={null}
+            secureTextEntry={false}
           />
         </View>
         <View style={styles.inputContainer}>
@@ -118,7 +121,8 @@ const Signup = ({ navigation }) => {
             value={email}
             onChangeText={setEmail}
             placeHolder="test@example.com"
-            style={styles.input}
+            customStyle={null}
+            secureTextEntry={false}
           />
         </View>
         <View style={styles.inputContainer}>
@@ -127,8 +131,8 @@ const Signup = ({ navigation }) => {
             value={password}
             onChangeText={setPassword}
             placeHolder="Test@123"
+            customStyle={null}
             secureTextEntry={true}
-            style={styles.input}
           />
         </View>
         <View style={styles.inputContainer}>
@@ -137,8 +141,8 @@ const Signup = ({ navigation }) => {
             value={confirmPassword}
             onChangeText={setConfirmPassword}
             placeHolder="Test@123"
+            customStyle={null}
             secureTextEntry={true}
-            style={styles.input}
           />
         </View>
         <Button
@@ -159,21 +163,21 @@ const styles = StyleSheet.create({
     lineHeight: 19.92,
     fontWeight: "400",
     padding: 30,
-    fontWeight: "400",
   },
   inputContainer: {
-    innerWidth: 375,
+    width: 375,
     height: 101,
   },
   signUp: {
     margin: "auto",
-    marginTop: 30,
+    marginTop: 35,
+    marginBottom: 30,
   },
   icon: {
     top: 15,
-    width: 20,
-    height: 25,
-    left: 15,
+    width: 40,
+    height: 40,
+    left: 10,
   },
   text: {
     top: 20,

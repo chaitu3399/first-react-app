@@ -2,7 +2,14 @@ import { StyleSheet, Text, View} from 'react-native'
 import React from 'react'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
-const Button = ({label, onPress, customStyle}) => {
+
+type props = {
+  label: string,
+  onPress: any,
+  customStyle: any
+}
+
+const Button: React.FC<props> = ({label, onPress, customStyle}) => {
   return (
     <View style = {customStyle}>
       <TouchableOpacity style = {styles.button} onPress = {onPress}>

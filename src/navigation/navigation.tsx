@@ -3,10 +3,11 @@ import React from "react";
 import { screenNames } from "./screenNames";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import LandingPage from "../Screens/LandingPage";
-import Signup from "../Screens/Signup";
-import Login from "../Screens/Login";
-import Profile from "../Screens/Profile";
+import LandingPage from "views/landingPage";
+import Signup from "views/signUp";
+import Login from "views/signIn";
+import Profile from "views/profile";
+import HomePage from "views/jobListing";
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,11 @@ const AppNavigation = () => {
       <Stack.Screen
         name={screenNames.PROFILE}
         component={Profile}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={screenNames.HOME}
+        component={HomePage}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

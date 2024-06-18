@@ -1,22 +1,20 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Alert} from "react-native";
 import React, { useState } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import Input from "../components/Input";
-import Button from "../components/Button";
+import Input from "./components/input";
+import Button from "./components/button";
 import { screenNames } from "../navigation/screenNames";
 
-const Login = ({ navigation }) => {
+
+const Login = ({ navigation }: {navigation: any}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSignIn = () => {
-    const uppercaseRegex = /[A-Z]/;
-    const digitRegex = /\d/;
-    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    let errors = [];
+    let errors: Array<String> = [];
 
     //Email Validation
     if (!email) {
@@ -28,29 +26,23 @@ const Login = ({ navigation }) => {
     //Password validation
     if (!password) {
       errors.push("Password is required.");
-    } else if (password.length < 6) {
-      errors.push("Password must be atleast 6 characters.");
-    } else if (!digitRegex.test(password)) {
-      errors.push("Password must contain at least one digit.");
-    } else if (!specialCharRegex.test(password)) {
-      errors.push("Password must contain at least one special symbol.");
-    } else if (!uppercaseRegex.test(password)) {
-      errors.push("Password must contain at least one uppercase letter.");
     }
 
     if (errors.length != 0) {
-      alert(errors.join("\n"));
+      Alert.alert(errors.join("\n"));
+    } else {
+      navigation.navigate(screenNames.HOME);
     }
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView>
       <TouchableOpacity
         onPress={() => navigation.navigate(screenNames.LANDINGPAGE)}
       >
         <Image
           source={require("../assets/left-arrow.png")}
-          style={styles.icon}
+          style={styles.backIcon}
         ></Image>
       </TouchableOpacity>
       <Text style={styles.text}>Sign In</Text>
@@ -59,11 +51,13 @@ const Login = ({ navigation }) => {
         onChangeText={setEmail}
         placeHolder="Email"
         customStyle={styles.input}
+        secureTextEntry={false}
       />
       <Input
         value={password}
         onChangeText={setPassword}
         placeHolder="Password"
+        customStyle={null}
         secureTextEntry={true}
       />
       <Button
@@ -71,20 +65,14 @@ const Login = ({ navigation }) => {
         onPress={handleSignIn}
         customStyle={[styles.signInBtn]}
       />
-      <TouchableOpacity onPress={() => navigation.navigate(screenNames.SIGNUP)}>
-        <View>
-          <Text
-            style={{
-              fontSize: 15,
-              margin: "auto",
-              marginTop: 10,
-              color: "blue",
-            }}
-          >
-            Don't have an account, sign-up
-          </Text>
-        </View>
-      </TouchableOpacity>
+      <View style={styles.bottomText}>
+        <Text style={{ fontSize: 15 }}>Don't have an account? </Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate(screenNames.SIGNUP)}
+        >
+          <Text style={{ fontSize: 15, color: "blue" }}>Sign Up</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
@@ -92,25 +80,30 @@ const Login = ({ navigation }) => {
 export default Login;
 
 const styles = StyleSheet.create({
-  input: {
-    marginTop: 250,
-    marginBottom: 15,
-  },
-  signInBtn: {
-    marginTop: 20,
-    margin: "auto",
-  },
-  icon: {
-    top: 15,
-    width: 12,
-    height: 25,
-    marginLeft: 15,
-  },
   text: {
-    top: 130,
+    marginTop: 95,
     fontWeight: "700",
     fontSize: 18,
     lineHeight: 21,
     margin: "auto",
+    marginBottom: 100,
+  },
+  backIcon: {
+    width: 40,
+    height: 40,
+    left: 10,
+    top: 15,
+  },
+  input: {
+    marginBottom: 20,
+  },
+  signInBtn: {
+    marginTop: 30,
+    margin: "auto",
+  },
+  bottomText: {
+    marginTop: 10,
+    flexDirection: "row",
+    justifyContent: "center",
   },
 });
