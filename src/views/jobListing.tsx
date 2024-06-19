@@ -23,7 +23,7 @@ const HomePage = ({ navigation }: {navigation: any}) => {
             onPress={() => navigation.navigate(screenNames.LANDINGPAGE)}
           >
             <Image
-              source={require("../assets/left-arrow.png")}
+              source={require("images/left-arrow.png")}
               style={styles.icon}
             ></Image>
           </TouchableOpacity>

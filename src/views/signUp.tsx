@@ -72,14 +72,14 @@ const Signup = ({ navigation }: {navigation: any}) => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style = {{flex: 1, alignItems: 'center'}}>
       <ScrollView>
         <View style={{ flexDirection: "row", marginTop: 10 }}>
           <TouchableOpacity
             onPress={() => navigation.navigate(screenNames.LANDINGPAGE)}
           >
             <Image
-              source={require("../assets/left-arrow.png")}
+              source={require("images/left-arrow.png")}
               style={styles.icon}
             ></Image>
           </TouchableOpacity>
@@ -91,7 +91,7 @@ const Signup = ({ navigation }: {navigation: any}) => {
             value={userName}
             onChangeText={setUserName}
             placeHolder="John Doe"
-            customStyle={null}
+            customStyle={{alignSelf: 'center'}}
             secureTextEntry={false}
           />
         </View>
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     lineHeight: 19.92,
     fontWeight: "400",
-    padding: 30,
+    padding: 20,
   },
   inputContainer: {
     width: 375,
@@ -184,8 +184,8 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 18,
     lineHeight: 21,
-    margin: "auto",
-    right: 20,
     marginBottom: 20,
+    marginHorizontal: 'auto'
   },
+  
 });

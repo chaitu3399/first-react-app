@@ -51,7 +51,7 @@ const Profile = ({ navigation }: {navigation: any}) => {
             onPress={() => navigation.navigate(screenNames.SIGNUP)}
           >
             <Image
-              source={require("../assets/left-arrow.png")}
+              source={require("images/left-arrow.png")}
               style={styles.icon}
             ></Image>
           </TouchableOpacity>
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     height: 40,
   },
   input: {
-    width: (winWidth - 40) / 2,
+    width: '40%',
   },
   saveBtn: {
     marginTop: 100,

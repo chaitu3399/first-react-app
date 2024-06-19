@@ -1,15 +1,14 @@
 import { StyleSheet, Text, View, TextInput, Dimensions } from "react-native";
 import React from "react";
 
-const { width: winWidth} = Dimensions.get("window");
-
+const winWidth = Dimensions.get('screen').width;
 
 type props = {
   value: any,
   onChangeText: any,
   placeHolder: string,
   secureTextEntry: boolean,
-  customStyle: any
+  customStyle: any,
 }
 
 const Input: React.FC<props> = ({
@@ -36,7 +35,7 @@ export default Input;
 
 const styles = StyleSheet.create({
   input: {
-    width: winWidth - 40,
+    width: '90%',
     height: 48,
     borderWidth: 1,
     borderColor: "#607D8B40",

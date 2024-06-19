@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker";
 
-const UploadImage = ({ customStyle }) => {
-  const [image, setImage] = useState(null);
+
+const UploadImage = ({ customStyle }: {customStyle: any}) => {
+  const [image, setImage] = useState<any|null>(null);
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({

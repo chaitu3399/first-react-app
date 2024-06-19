@@ -6,7 +6,7 @@ import SvgImage from "./components/svgImage";
 import Button from "./components/button";
 import { screenNames } from "../navigation/screenNames";
 
-const { height: winHeight } = Dimensions.get("window");
+
 
 const LandingPage = ({ navigation }: {navigation: any}) => {
   return (
