@@ -10,12 +10,11 @@ import {
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-
 import Button from "./components/button";
 import { screenNames } from "../navigation/screenNames";
 import Input from "./components/input";
 
-const Signup = ({ navigation }: {navigation: any}) => {
+const Signup = ({ navigation }: { navigation: any }) => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState(0);
   const [college, setcollege] = useState("");
@@ -41,7 +40,7 @@ const Signup = ({ navigation }: {navigation: any}) => {
     //Handling phone number
     if (!phoneNumber) {
       errors.push("Phone Number is Required.");
-    } 
+    }
     //Handling Email
     if (!email) {
       errors.push("Email is required.");
@@ -72,7 +71,7 @@ const Signup = ({ navigation }: {navigation: any}) => {
   };
 
   return (
-    <SafeAreaView style = {{flex: 1, alignItems: 'center'}}>
+    <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
         <View style={{ flexDirection: "row", marginTop: 10 }}>
           <TouchableOpacity
@@ -91,7 +90,7 @@ const Signup = ({ navigation }: {navigation: any}) => {
             value={userName}
             onChangeText={setUserName}
             placeHolder="John Doe"
-            customStyle={{alignSelf: 'center'}}
+            customStyle={{ alignSelf: "center" }}
             secureTextEntry={false}
           />
         </View>
@@ -162,11 +161,8 @@ const styles = StyleSheet.create({
     fontSize: 17,
     lineHeight: 19.92,
     fontWeight: "400",
-    padding: 20,
-  },
-  inputContainer: {
-    width: 375,
-    height: 101,
+    paddingLeft: 20,
+    paddingBottom: 10,
   },
   signUp: {
     margin: "auto",
@@ -184,8 +180,10 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 18,
     lineHeight: 21,
-    marginBottom: 20,
-    marginHorizontal: 'auto'
+    marginBottom: 60,
+    marginHorizontal: "auto",
   },
-  
+  inputContainer: {
+    paddingBottom: 20,
+  },
 });

@@ -6,13 +6,11 @@ import SvgImage from "./components/svgImage";
 import Button from "./components/button";
 import { screenNames } from "../navigation/screenNames";
 
-
-
-const LandingPage = ({ navigation }: {navigation: any}) => {
+const LandingPage = ({ navigation }: { navigation: any }) => {
   return (
     <SafeAreaView style={styles.container}>
-      <View style = {styles.image}>
-      <SvgImage props={null}/>
+      <View style={styles.image}>
+        <SvgImage props={null} />
       </View>
       <Text style={styles.text}>
         XXXXXX lets you lorem ipsum dolor set amet. Lorem ipsum dolor set amet.
@@ -24,7 +22,7 @@ const LandingPage = ({ navigation }: {navigation: any}) => {
           onPress={() => navigation.navigate(screenNames.SIGNUP)}
         />
         <Button
-          label="Sign in"
+          label="Sign In"
           customStyle={null}
           onPress={() => navigation.navigate(screenNames.LOGIN)}
         />
@@ -38,13 +36,12 @@ export default LandingPage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignContent: 'center'
   },
   image: {
     width: 269.96,
     height: 203.75,
-    alignSelf: 'center',
-    marginTop: 100
+    alignSelf: "center",
+    marginTop: 150,
   },
   text: {
     fontSize: 18,
@@ -52,11 +49,12 @@ const styles = StyleSheet.create({
     width: 305,
     fontWeight: "400",
     marginTop: 80,
-    alignSelf: 'center'
+    alignSelf: "center",
   },
   btn: {
     flexDirection: "row",
     justifyContent: "space-evenly",
+    alignContent: "flex-end",
     marginTop: 60,
   },
 });

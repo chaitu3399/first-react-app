@@ -12,7 +12,7 @@ import { screenNames } from "../navigation/screenNames";
 import Input from "./components/input";
 import JobCardList from "./components/jobCardList";
 
-const HomePage = ({ navigation }: {navigation: any}) => {
+const HomePage = ({ navigation }: { navigation: any }) => {
   const [Search, setSearch] = React.useState("");
 
   return (
@@ -33,7 +33,7 @@ const HomePage = ({ navigation }: {navigation: any}) => {
           value={Search}
           onChangeText={setSearch}
           placeHolder="Search Jobs"
-          secureTextEntry={true}
+          secureTextEntry={false}
           customStyle={null}
         />
         <View style={styles.jobListConatainer}>

@@ -10,7 +10,7 @@ import Button from "./components/button";
 
 const { width: winWidth, height: winHeight } = Dimensions.get("window");
 
-const Profile = ({ navigation }: {navigation: any}) => {
+const Profile = ({ navigation }: { navigation: any }) => {
   const [userName, setUserName] = useState("");
   const [college, setCollege] = useState();
   const [phoneNumber, setPhoneNumber] = React.useState("");
@@ -25,7 +25,7 @@ const Profile = ({ navigation }: {navigation: any}) => {
     const dateOfBirthRegex =
       /(^0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(\d{4}$)/;
     let errors: Array<String> = [];
-    const sexOptions: String = 'MALE'
+    const sexOptions: String = "MALE";
     if (!course) {
       errors.push("Course is required.");
     }
@@ -38,8 +38,15 @@ const Profile = ({ navigation }: {navigation: any}) => {
 
     if (!sex) {
       errors.push("Sex is Required");
-    } else if (sex.toLocaleUpperCase() != "MALE" || sex.toLocaleUpperCase() != "FEMALE") {
+    } else if (
+      sex.toLocaleUpperCase() != "MALE" ||
+      sex.toLocaleUpperCase() != "FEMALE"
+    ) {
       errors.push("Enter Male or Female");
+    }
+
+    if (errors.length == 0) {
+      navigation.navigate(screenNames.HOME);
     }
   };
 
@@ -150,7 +157,7 @@ const Profile = ({ navigation }: {navigation: any}) => {
             value={about}
             onChangeText={setAbout}
             placeHolder="I am Krishna Chaitanya"
-            customStyle={{ height: 100, top: 25 }}
+            customStyle={{ height: 100 }}
             secureTextEntry={false}
           />
         </View>
@@ -185,22 +192,22 @@ const styles = StyleSheet.create({
     fontSize: 17,
     lineHeight: 19.92,
     fontWeight: "400",
-    padding: 30,
-  },
-  inputContainer: {
-    width: 375,
-    height: 101,
+    paddingLeft: 20,
+    paddingBottom: 10,
   },
   icon: {
     width: 40,
     height: 40,
   },
   input: {
-    width: '40%',
+    width: (winWidth - 30) / 2,
   },
   saveBtn: {
-    marginTop: 100,
+    marginTop: 50,
     margin: "auto",
     marginBottom: 30,
+  },
+  inputContainer: {
+    paddingBottom: 20,
   },
 });
